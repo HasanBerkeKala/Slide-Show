@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        #slaytAlani{
+            width:1000px;
+            height:350px;
+            margin:50px auto;
+            position:relative;
+            overflow:hidden;
+            border-radius:50px;
+        }
+        #resim{
+            width:1000px;
+            height:350px;
+            position:relative;
+        }
+        .solAlani{
+            width:100px;
+            height:350px;
+            text-align:left;
+            position:absolute;
+            left:0;
+            top:0;
+        }
+
+        .sagAlani {
+            width: 100px;
+            height: 350px;
+            text-align: right;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .sol{
+            width:50px;
+            height:50px;
+            position:absolute;
+            top:40%;
+            left: 25px;
+            opacity:0;
+            transition: all .5s ease-in-out 0s;
+        }
+        .sag {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 40%;
+            right: 25px;
+            opacity: 0;
+            transition: all .5s ease-in-out 0s;
+        }
+        .solAlani:hover .sol{
+            opacity: 0.7;
+        }
+        .sagAlani:hover .sag {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body onload="calistir()">
+    <div id="slaytAlani">
+        <img id="resim" src="slayt1.jpg" width="1000" height="350" style="border:none;" />
+
+
+        <div class="solAlani"><img onclick="resimDegistir(-1)" class="sol" src="solok.png" width="50" height="50" style="border:none; cursor:pointer;" /></div>
+        <div class="sagAlani"><img onclick="resimDegistir(1)" class="sag" src="sagok.png" width="50" height="50" style="border:none; cursor:pointer;" /></div>
+    </div> 
+   
+    <script type="text/javascript" language="javascript">
+
+        var resimSirasi = 1;
+        var toplamResim = 10;
+
+        function resimDegistir(deger) {
+            var resim = document.getElementById('resim');
+            resimSirasi = resimSirasi + deger;
+            if (resimSirasi > toplamResim) {
+                resimSirasi = 1;
+            }
+            if (resimSirasi < 1) {
+                resimSirasi = toplamResim;
+            }
+            resim.src = "slayt" + resimSirasi + ".jpg";
+            clearInterval(zaman);
+        }
+        zaman = window.setInterval(function calistir() {
+            var resim = document.getElementById('resim');
+            resimSirasi = resimSirasi + 1;
+            if (resimSirasi > toplamResim) {
+                resimSirasi = 1;
+            }
+            if (resimSirasi < 1) {
+                resimSirasi = toplamResim;
+            }
+            resim.src = "slayt" + resimSirasi + ".jpg";
+        }, 2000)
+
+        
+            var zaman = window.setInterval(function calistir() {
+                var resim = document.getElementById('resim');
+                resimSirasi = resimSirasi + 1;
+                if (resimSirasi > toplamResim) {
+                    resimSirasi = 1;
+                }
+                if (resimSirasi < 1) {
+                    resimSirasi = toplamResim;
+                }
+                resim.src = "slayt" + resimSirasi + ".jpg";
+            }, 2000);
+
+        
+
+
+
+
+    </script>
+</body>
+</html>
